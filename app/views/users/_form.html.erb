@@ -1,7 +1,8 @@
 <section class="row">
     <div class="col-6 m-auto">
         <hr>
-        <%= form_for :user do |f| %>
+        <%= form_for @user do |f| %>
+        <%= render "error_messages" %>
             <%= f.label :name  %>
             <%= f.text_field :name, class: "form-control" %>
 
