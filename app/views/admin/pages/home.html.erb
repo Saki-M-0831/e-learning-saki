@@ -2,9 +2,13 @@
 
 <section class="row text-center">
     <div class="col-6 m-auto">
-        <%= link_to "Categories", root_path, class: "btn btn-outline-primary my-2" %>
-        <p>You can manage the categories here freely! <br> Let's add/ edit awesome categories now!!</p>
-        <%= link_to "Administrators", root_path, class: "btn btn-outline-primary my-2" %>
-        <p>These are the people contributing to improve this app more and more! <br> You can add or remove members.</p>
+        <div class="col my-5">
+            <%= link_to "Categories", root_path, class: "btn btn-outline-primary my-2" %>
+            <p>You can manage the categories here freely! <br> Let's add/ edit awesome categories now!!</p>
+        </div>
+        <div class="col mb-5">
+            <%= link_to "Administrators", admin_users_home_path, class: "btn btn-outline-primary my-2" %>
+            <p>These are the people contributing to improve this app more and more! <br> You can add or remove members.</p>
+        </div>
     </div>
 </section>

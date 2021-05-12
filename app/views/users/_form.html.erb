@@ -6,7 +6,7 @@
             <% if logged_in? %>
                 <%= f.label :avator  %>
                 <%= f.file_field :picture, class: "form-control" %>
-                <p class="mt-0 text-muted">Recommended size: 200px by 200px</p>
+                <p class="my-0 text-muted">* Recommended size: 200px by 200px</p>
             <% end %>
             <%= f.label :name  %>
             <%= f.text_field :name, class: "form-control" %>
