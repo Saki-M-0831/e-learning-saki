@@ -2,7 +2,7 @@
 <section class="row">
     <div class="col-6 m-auto">
         <hr>
-        <%= form_for :session do |f| %>
+        <%= form_for :session, url: sessions_path do |f| %>
 
             <%= f.label :email %>
             <%= f.email_field :email, class: "form-control" %>
