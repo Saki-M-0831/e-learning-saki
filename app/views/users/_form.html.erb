@@ -3,6 +3,10 @@
         <hr>
         <%= form_for @user do |f| %>
         <%= render "error_messages" %>
+            <% if logged_in? %>
+                <%= f.label :avator  %>
+                <%= f.file_field :picture, class: "form-control" %>
+            <% end %>
             <%= f.label :name  %>
             <%= f.text_field :name, class: "form-control" %>
 

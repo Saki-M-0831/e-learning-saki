@@ -20,7 +20,7 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <%= link_to "Profile", root_path, class:"nav-link text-dark" %>
-                        <%= link_to "Settings", root_path, class:"nav-link text-dark" %>
+                        <%= link_to "Settings", edit_user_path(current_user), class:"nav-link text-dark" %>
                         <%= link_to "Log-out", session_path(current_user), method: :delete, class:"nav-link text-dark" %>
                     <div class="dropdown-divider"></div>
                         <%= link_to "Home", root_path, class:"nav-link text-dark" %>
