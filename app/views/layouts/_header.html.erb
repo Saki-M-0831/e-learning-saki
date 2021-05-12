@@ -23,7 +23,7 @@
                         <%= link_to "Settings", edit_user_path(current_user), class:"nav-link text-dark" %>
                         <%= link_to "Log-out", session_path(current_user), method: :delete, class:"nav-link text-dark" %>
                     <div class="dropdown-divider"></div>
-                        <%= link_to "Home", root_path, class:"nav-link text-dark" %>
+                        <%= link_to "Administration", admin_pages_home_path, class:"nav-link text-dark" %>
                     </div>
                 </li>
             <% else %>
