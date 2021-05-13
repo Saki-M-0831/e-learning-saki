@@ -1,4 +1,4 @@
-<h1 class="text-center my-4">Users/ Administrators</h1>
+<h1 class="text-center my-5">Users/ Administrators</h1>
 
 <section class="row mx-5">
     <% @users.each do |user| %>
@@ -35,3 +35,6 @@
         </div>
     <% end %>
 </section>
+<div class="col-2 mt-5 mx-auto pl-5">
+    <%= will_paginate @users %>
+</div>
