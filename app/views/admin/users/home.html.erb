@@ -1,8 +1,8 @@
-<h1 class="text-center my-4">Administrators</h1>
+<h1 class="text-center my-4">Users/ Administrators</h1>
 
-<section class="row">
+<section class="row mx-5">
     <% @users.each do |user| %>
-        <div class="col-6 mx-5">
+        <div class="col-6">
             <div class="card mb-2">
                 <div class="card-body">    
                     <div class="row">
@@ -16,17 +16,17 @@
                         <div class="col-6 mt-4">
                             <h5>
                                 <% if user.is_admin == true %>
-                                    <i class="fas fa-crown text-warning"></i>
+                                    <%= fa_icon("star") %>
                                 <% end %>
                                 <%= link_to user.name, root_path %> 
                             </h5>
                             <%= user.email %> <br>
                         </div>
-                        <div class="col-3 mt-4">
+                        <div class="col-3 mt-3">
                             <% if user.is_admin == true %>
-                                <%= link_to "Remove From Admin", root_path, class: "btn btn-outline-danger my-2" %>
+                                <%= link_to "Remove From Admin", root_path, class: "btn btn-outline-danger" %>
                             <% else %>
-                                <%= link_to "Set As Admin", root_path, class: "btn btn-outline-info my-2" %>
+                                <%= link_to "Set As Admin", root_path, class: "btn btn-outline-info" %>
                             <% end %>
                         </div>
                     </div>

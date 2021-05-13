@@ -1,6 +1,10 @@
-<h1 class="text-center my-4">Welcome to E-Learning</h1>
-<section class="row">
-    <div class="col-6 m-auto">
+<% if logged_in? %>
+    <h1 class="text-center my-4">This is home of current_user</h1>
+<% else %>
+    <h1 class="text-center my-4">Welcome to E-Learning</h1>
+    <section class="row">
+        <div class="col-6 m-auto">
 
-    </div>
-</section>
+        </div>
+    </section>
+<% end %>
