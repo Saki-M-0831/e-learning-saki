@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get '/about', to: "pages#about"
 
   namespace :admin do
-    get 'users/home'
+    resources :users
   end
   namespace :admin do
     get 'pages/home'
