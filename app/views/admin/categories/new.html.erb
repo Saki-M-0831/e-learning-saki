@@ -1,0 +1,37 @@
+<h1 class="text-center my-4">Create New Category</h1>
+
+<section class="container">
+    <section class="card mx-5">
+        <div class="card-header py-1">
+            <div class="col-1 float-right">
+                <%= link_to "back", admin_categories_path, class: "text-right mr-2" %>
+            </div>
+        </div>
+        <div class="card-body">
+            <%= form_for :category do |f| %>
+                <div class="row mx-5 mt-3">
+                    <div class="col-2 text-right">
+                        <%= f.label :title, class: "font-weight-bold" %>
+                    </div>
+                    <div class="col-10">
+                        <%= f.text_field :title, class: "form-control" %>
+                    </div>
+                </div>
+                <div class="row mx-5 mt-4">
+                    <div class="col-2 text-right">
+                        <%= f.label :description, class: "font-weight-bold" %>
+                    </div>
+                    <div class="col-10">
+                        <%= f.text_area :description, class: "form-control" %> 
+                    </div>
+                </div>
+                <div class="row mx-5 mt-3">
+                    <div class="col-1 m-auto">
+                        <%= f.submit "Save Category", class: "btn btn-outline-success" %>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+    </section>
+</section>
+
