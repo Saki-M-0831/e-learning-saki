@@ -1,3 +1,14 @@
 <h1 class="text-center my-4">Create New Category</h1>
 
-<%= render "form_category" %>
+<section class="container">
+    <section class="card mx-5">
+        <div class="card-header py-1">
+            <div class="col-1 float-right">
+                <%= link_to "back", admin_categories_path, class: "text-right mr-2" %>
+            </div>
+        </div>
+        <div class="card-body">
+            <%= render "form_category" %>
+        </div>
+    </section>
+</section>
