@@ -70,3 +70,6 @@ gem 'carrierwave', '1.2.2'
 gem 'mini_magick', '4.7.0'
 
 gem 'bcrypt', '~> 3.1.7'
+
+gem 'will_paginate', '~> 3.1.0'
+gem 'will_paginate-bootstrap4'

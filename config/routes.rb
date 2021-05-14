@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
+  root 'pages#home'
+  get '/about', to: "pages#about"
+
+  namespace :admin do
+    resources :users
+  end
   namespace :admin do
     get 'pages/home'
   end
-  root 'pages#home'
 
   resources :pages
   resources :users

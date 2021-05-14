@@ -1,0 +1,40 @@
+<h1 class="text-center my-5">Users/ Administrators</h1>
+
+<section class="row mx-5">
+    <% @users.each do |user| %>
+        <div class="col-6">
+            <div class="card mb-2">
+                <div class="card-body">    
+                    <div class="row">
+                        <div class="col-3 align-center">
+                            <% if user.picture? %>
+                                <%= image_tag user.picture.url, class: "rounded-circle", :size => "100x100" %>
+                            <% else %>
+                                <%= image_tag "https://cdn.pixabay.com/photo/2017/01/10/03/54/icon-1968236__480.png", class: "rounded-circle", :size => "100x100" %>
+                            <% end %>
+                        </div>
+                        <div class="col-6 mt-4">
+                            <h5>
+                                <% if user.is_admin == true %>
+                                    <%= fa_icon("star") %>
+                                <% end %>
+                                <%= link_to user.name, root_path %> 
+                            </h5>
+                            <%= user.email %> <br>
+                        </div>
+                        <div class="col-3 mt-3">
+                            <% if user.is_admin == true %>
+                                <%= link_to "Remove From Admin", root_path, class: "btn btn-outline-danger" %>
+                            <% else %>
+                                <%= link_to "Set As Admin", root_path, class: "btn btn-outline-info" %>
+                            <% end %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <% end %>
+</section>
+<div class="col-2 mt-5 mx-auto pl-5">
+    <%= will_paginate @users %>
+</div>
