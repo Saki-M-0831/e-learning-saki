@@ -1,3 +1,10 @@
 // Place all the styles related to the admin/users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.admin-bg {
+    background-color: rgba(51, 175, 171, 0.203);
+}
+.non-admin-bg {
+    background-color: white;
+}
