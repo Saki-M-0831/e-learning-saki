@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-  namespace :admin do
-    get 'categories/index'
-  end
+  
   root 'pages#home'
   get '/about', to: "pages#about"
 
@@ -14,7 +12,7 @@ Rails.application.routes.draw do
         patch "remove_admin"
       end
     end
-    
+
     resources :categories
 
   end
