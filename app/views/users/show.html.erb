@@ -1,1 +1,31 @@
-<h1 class="text-center my-4">Profile</h1>
+<section class="container mt-5">
+    <div class="row mx-5 text-center">
+        <div class="rol-1">
+            <div class="card">
+                <div class="card-body p-4 profile-bg">
+                    <% if current_user.picture? %>
+                        <%= image_tag current_user.picture.url, class: "rounded-circle mt-3", :size => "100x100" %>
+                    <% else %>
+                        <%= image_tag "https://cdn.pixabay.com/photo/2017/01/10/03/54/icon-1968236__480.png", class: "rounded-circle", :size => "100x100" %>
+                    <% end %>
+                    <h1 class="pb-3"><%= current_user.name %></h1>
+                    <hr>
+                    <div class="row">
+                        <div class="col-6">
+                            <p> 0 <br> followers </p>
+                        </div>
+                        <div class="col-6">
+                            <p> 0 <br> following </p>
+                        </div>
+                    </div>
+                    <hr>
+                    <p>6 <br> words learned</p>
+                </div>
+            </div>
+        </div>     
+        <div class="rol-11 ml-4">
+            <h2>Activity</h2>
+            <hr>
+        </div>   
+    </div>
+</section>
