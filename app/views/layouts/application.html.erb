@@ -11,10 +11,19 @@
 
     <body>
         <%= render "layouts/header" %>
+        
+        <% if flash.any? %>
+            <% flash.each do |type, msg| %>
+                <div class="alert alert-<%= type%> mx-5">
+                    <div><%= msg %></div>
+                </div>
+            <% end %>
+        <% end %>
         <%= yield %>
         <br>
         <br>
         <br>
+        
         <%= render "layouts/footer" %>
     </body>
 </html>
