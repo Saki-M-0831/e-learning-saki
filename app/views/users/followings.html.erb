@@ -1,9 +1,13 @@
-<h1 class="text-center my-4">Members</h1>
+<h1 class="text-center my-4">Followings</h1>
 
-<section class="row mx-5">
-    <% @users.each do |user| %>
-        <div class="col-6 mt-2">
-            <div class="card mb-2">
+<div class="mx-5">
+    <%= link_to "Back to Profile", user_path(current_user), class: "btn btn-outline-primary ml-3" %>
+</div>
+
+<div class="row mx-5">
+    <% @followings.each do |user| %>
+        <div class="col-6 mt-3">
+            <div class="card">
                 <div class="card-body">
                     <div class="row">
                         <div class="col-3 align-center">
@@ -23,21 +27,17 @@
                             <%= user.email %> <br>
                         </div>
                         <div class="col-3 mt-4">
-                            <% unless user == current_user %>
-                                <% relationship = current_user.relationship(user) %>
-                                <% if relationship %>
-                                    <%= button_to "Unfollow", relationship_path(relationship), method: :delete, params: {followed_id: user.id}, class: "btn btn-outline-danger" %> 
-                                <% else %>
-                                    <%= button_to "Follow", relationships_path, params: {followed_id: user.id}, class: "btn btn-outline-primary" %>
-                                <% end %>
-                            <% end %>
+                            <% relationship = current_user.relationship(user) %>
+                            <%= button_to "Unfollow", relationship_path(relationship), method: :delete, params: {followed_id: user.id}, class: "btn btn-outline-danger" %> 
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>     
         </div>
-    <% end %>
-</section>
+     <% end %>
+     <hr>
+</div>
+
 <div class="col-2 mt-5 mx-auto pl-5">
-    <%= will_paginate @users %>
+    <%= will_paginate @followings %>
 </div>

@@ -32,7 +32,16 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+  end
 
+  def followers
+    @user = User.find(params[:id])
+    @followers = @user.followers.paginate(page: params[:page], per_page: 6)
+  end
+
+  def followings
+    @user = User.find(params[:id])
+    @followings = @user.followings.paginate(page: params[:page], per_page: 6)
   end
 
   def user_params
