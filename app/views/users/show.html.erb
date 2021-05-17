@@ -3,12 +3,12 @@
         <div class="rol-1">
             <div class="card">
                 <div class="card-body p-4 profile-bg">
-                    <% if current_user.picture? %>
-                        <%= image_tag current_user.picture.url, class: "rounded-circle mt-3", :size => "100x100" %>
+                    <% if @user.picture? %>
+                        <%= image_tag @user.picture.url, class: "rounded-circle mt-3", :size => "100x100" %>
                     <% else %>
                         <%= image_tag "https://cdn.pixabay.com/photo/2017/01/10/03/54/icon-1968236__480.png", class: "rounded-circle", :size => "100x100" %>
                     <% end %>
-                    <h1 class="pb-3"><%= current_user.name %></h1>
+                    <h1 class="pb-3"><%= @user.name %></h1>
                     <hr>
                     <div class="row">
                         <div class="col-6">
