@@ -10,4 +10,33 @@ class User < ApplicationRecord
                     uniqueness: { case_sensitive: false }
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
+
+  def follow(other_user)
+    Relationship.create(
+      follower_id: id,
+      followed_id: other_user.id
+    )
+  end
+
+  def active_relationships
+    Relationship.where(follower_id: id)
+  end
+
+  def passive_relationships
+    Relationship.where(followed_id: id)
+  end
+
+  def relationship(other_user)
+    active_relationships.find_by(followed_id: other_user.id)
+  end
+
+  def followers
+    ids = passive_relationships.pluck(:follower_id)
+    User.where(id: ids)
+  end
+
+  def followings
+    ids = active_relationships.pluck(:followed_id)
+    User.where(id: ids)
+  end 
 end
