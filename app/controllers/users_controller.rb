@@ -30,6 +30,11 @@ class UsersController < ApplicationController
     @users = User.all.paginate(page: params[:page], per_page: 6)
   end
 
+  def show
+    @user = User.find(params[:id])
+
+  end
+
   def user_params
     params.require(:user).permit(:picture, :name, :email, :password, :password_confirmation, :is_admin)
   end
