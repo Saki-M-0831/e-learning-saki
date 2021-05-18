@@ -1,11 +1,5 @@
 Rails.application.routes.draw do
-  
-  namespace :admin do
-    get 'words/index'
-    get 'words/new'
-  end
-  get 'words/index'
-  get 'words/new'
+
   root 'pages#home'
   get '/about', to: "pages#about"
 
