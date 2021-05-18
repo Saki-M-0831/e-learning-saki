@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   root 'pages#home'
   get '/about', to: "pages#about"
 
@@ -13,8 +13,9 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :categories
-
+    resources :categories do
+      resources :words
+    end
   end
 
   resources :pages
