@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'categories/index'
   root 'pages#home'
   get '/about', to: "pages#about"
 
@@ -29,4 +28,5 @@ Rails.application.routes.draw do
 
   resources :sessions, only: [:new, :create, :destroy]
   resources :relationships, only: [:create, :destroy]
+  resources :categories
 end
