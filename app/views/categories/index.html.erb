@@ -1,0 +1,21 @@
+<h1 class="text-center my-4">Categories <span class="text-muted">(<%= @categories.count %>)</span> </h1>
+
+<section class="container">
+    <section class="row">
+        <% @categories.each do |category| %>
+            <div class="col-6 mt-3">
+                <div class="card">
+                    <div class="card-body mx-3">
+                        <h3><%= category.title %></h3>
+                        <p><span class="font-weight-bold">[<%= pluralize(category.words.count, "word") %>] </span> <%= category.description %></p> <br>
+                        <%= link_to "Learn", root_path, class: "btn btn-primary btn-block" %>
+                    </div>
+                </div>     
+            </div>
+        <% end %>
+    </section>
+</section>
+
+<div class="col-2 mt-5 mx-auto pl-5">
+    <%= will_paginate @categories %>
+</div>
