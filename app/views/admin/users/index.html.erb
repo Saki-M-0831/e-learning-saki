@@ -1,5 +1,9 @@
 <h1 class="text-center my-5">Users/ Administrators</h1>
 
+<div class="mx-5 mb-3">
+    <%= link_to "Back to Admin", admin_pages_home_path, class: "btn btn-outline-primary ml-3" %>
+</div>
+
 <section class="row mx-5">
     <% @users.each do |user| %>
         <div class="col-6">
