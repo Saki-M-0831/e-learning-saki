@@ -12,10 +12,12 @@
                     <hr>
                     <div class="row p-3">
                         <div class="col-6">
-                            <%= link_to pluralize(@user.followers.count, "followers"), followers_user_path(@user), class: "text-primary" %>
+                            <%= link_to @user.followers.count, followers_user_path(@user), class: "text-primary" %>
+                            <p>Followers</p>
                         </div>
                         <div class="col-6">
-                            <%= link_to pluralize(@user.followings.count, "followings"), followings_user_path(@user), class: "text-primary" %>
+                            <%= link_to @user.followings.count, followings_user_path(@user), class: "text-primary" %>
+                            <p>Followings</p>
                         </div>
                     </div>
                     <hr>
