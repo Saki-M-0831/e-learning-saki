@@ -1,7 +1,7 @@
 class Admin::WordsController < ApplicationController
   def index
     @category = Category.find(params[:category_id])
-    @words = Word.where(params[:category_id])
+    @words = @category.words
   end
 
   def new
