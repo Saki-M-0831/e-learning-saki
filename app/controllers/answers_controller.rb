@@ -7,6 +7,8 @@ class AnswersController < ApplicationController
       @word = @lesson.next_word
       @lesson = Lesson.find(params[:lesson_id])
       @answer = Answer.new
+
+      @lesson.update(result: @lesson.score )
     end
   end
 

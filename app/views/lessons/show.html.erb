@@ -1,15 +1,42 @@
-<h1 class="text-center my-4">Result</h1>
+<h1 class="text-center my-4"><%= @category.title %></h1>
 
 <section class="container">
     <section class="col-8 mx-auto">
-        <section class="card mx-5 pb-4">
-            <div class="card-header py-1">
+        <section class="card mx-5 pb-1">
+            <div class="card-header py-1 mb-2">
                 <div class="col-3 text-right float-right">
                     <%= link_to "back", categories_path, class: "text-right mr-2" %>
                 </div>
             </div>
-            <div class="card-body text-center mx-5">
-                
+            <div class="card-body text-center mx-3">
+                <div class="row">
+                    <div class="col-2"><h5>Word</h5></div>
+                    <div class="col-4"><h5>Your Answer</h5></div>
+                    <div class="col-4"><h5>Correct Answer</h5></div>
+                </div>
+                <% @answers.each do |answer| %>
+                    <div class="row">
+                        <div class="col-2">
+                            <%= answer.word.content %>
+                        </div>
+                        <div class="col-4">
+                            <%= answer.choice.content %>
+                        </div>
+                        <div class="col-4">
+                            <%= answer.word.correct_choice %>
+                        </div>
+                        <div class="col-2">
+                            <% if answer.choice.content == answer.word.correct_choice %>
+                                <h3 class="text-success"><i class="fa fa-check-circle"></i></h3>
+                            <% else %>
+                                <h3 class="text-danger"><i class="fa fa-times-circle"></i></h3>
+                            <% end %>
+                        </div>
+                    </div>
+                <% end %>
+                <div class="ml-0 text-right mt-3">
+                    <h3 class="text-muted">Score: <span class="text-success"> <%= @lesson.score %></span> /<%= @category.words.count %> </h3>
+                </div>
             </div>
         </section>
     </section> 
