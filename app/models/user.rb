@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_many :lessons
   mount_uploader :picture, PictureUploader
 
   validates :name, presence: true, length: { maximum: 50 }

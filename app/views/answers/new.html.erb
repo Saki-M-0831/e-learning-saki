@@ -1,18 +1,22 @@
-<h1 class="text-center my-5"> category.title </h1>
+<h1 class="text-center my-5"> <%= @lesson.category.title %> </h1>
 
 <section class="container">
     <section class="col-8 mx-auto">
-        <section class="card mx-5 py-3">
+        <section class="card mx-5 pb-4">
             <div class="card-header py-1">
                 <div class="col-3 text-right float-right">
                     <%= link_to "back", categories_path, class: "text-right mr-2" %>
                 </div>
             </div>
             <div class="card-body text-center mx-5">
-                <h3 class="mb-4 text-success">@word.content</h3>
-                <%= link_to "choice.content", root_path, class:"btn btn-outline-primary btn-block mb-1" %>
-                <%= link_to "choice.content", root_path, class:"btn btn-outline-primary btn-block mb-1" %>
-                <%= link_to "choice.content", root_path, class:"btn btn-outline-primary btn-block mb-1" %>
+                <%= form_for ([@lesson, @answer]) do |f| %>
+                    <h3 class="mb-4 mt-2 text-success"> <%= @word.content %> </h3>
+                    <% @word.choices.each do |choice| %>
+                        <%= f.hidden_field :word_id, value: @word.id %>
+                        <%= f.hidden_field :choice_id, value: choice.id %>
+                        <%= f.submit choice.content, class:"btn btn-outline-primary btn-block mb-1" %>
+                    <% end %>
+                <% end %>
             </div>
         </section>
     </section> 
