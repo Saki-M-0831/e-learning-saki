@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'lessons/create'
   root 'pages#home'
   get '/about', to: "pages#about"
 
