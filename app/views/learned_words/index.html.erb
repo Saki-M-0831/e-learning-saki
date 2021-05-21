@@ -1,0 +1,64 @@
+<section class="container mt-5">
+    <div class="row">
+        <div class="col-4 text-center">
+            <div class="card">
+                <div class="card-body py-2">
+                    <% if current_user.picture? %>
+                        <%= image_tag current_user.picture.url, class: "rounded-circle mt-3", :size => "100x100" %>
+                    <% else %>
+                        <%= image_tag "https://cdn.pixabay.com/photo/2017/01/10/03/54/icon-1968236__480.png", class: "rounded-circle", :size => "100x100" %>
+                    <% end %>
+                    <h2><%= current_user.name %></h2>
+                    <%= current_user.email %>
+                    <hr>
+                    <div class="py-2">
+                        <div class="row mx-3">
+                            <div class="col-6">
+                                <%= link_to "View Profile", user_path(current_user), class: "btn btn-warning text-white btn-block" %>
+                            </div>
+                            <div class="col-6">
+                                <%= link_to "Update Profile", edit_user_path(current_user), class: "btn btn-primary btn-block" %>
+                            </div>
+                        </div>
+                    </div>
+                </div>  
+            </div>
+        </div>     
+        <div class="col-8">
+            <div class="row">
+                <div class="col-4"><h2>Words Learned</h2></div>
+                <div class="col-4 mt-auto ml-auto text-right">
+                    <%= link_to "Back to Dashboard", dashboard_path %>
+                </div>
+            </div>
+            <hr>
+            <div class="card">
+                <div class="card-header pb-0">
+                    <div class="row">
+                        <div class="col-4"><h6>Word</h6></div>
+                        <div class="col-4"><h6>Your Answer</h6></div>
+                        <div class="col-4"><h6>Correct Answer</h6></div>
+                    </div>  
+                </div>
+            </div>    
+            <% current_user.word_learned.each do |answer| %>
+                <div class="card">
+                    <div class="card-body py-2">
+                        <div class="row">
+                            <div class="col-4">
+                                <%= answer.word.content %>
+                            </div>
+                            <div class="col-4 <%= answer_color(answer) %>">
+                                <%= answer.choice.content %>
+                            </div>
+                            <div class="col-4">
+                                <%= answer.word.correct_choice %>
+                            </div>
+                        </div>
+                    </div>
+                </div>   
+            <% end %>
+        </div>   
+    </div>
+</section>
+
