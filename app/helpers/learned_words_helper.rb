@@ -1,6 +1,6 @@
 module LearnedWordsHelper
   def answer_color(answer)
-    if answer.choice.content == answer.word.choices.find_by(is_correct: true).content
+    if answer.choice.content == answer.word.correct_choice
       "text-success"
     else
       "text-danger"

@@ -52,7 +52,7 @@
                                 <%= answer.choice.content %>
                             </div>
                             <div class="col-4">
-                                <%= answer.word.choices.find_by(is_correct: true).content %>
+                                <%= answer.word.correct_choice %>
                             </div>
                         </div>
                     </div>
