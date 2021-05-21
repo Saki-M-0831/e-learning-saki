@@ -2,13 +2,13 @@ class AnswersController < ApplicationController
   def new
     @lesson = Lesson.find(params[:lesson_id])
     if @lesson.next_word.nil?
+
+      @lesson.update(result: @lesson.score )
       redirect_to lesson_path(@lesson)
     else
       @word = @lesson.next_word
       @lesson = Lesson.find(params[:lesson_id])
-      @answer = Answer.new
-
-      @lesson.update(result: @lesson.score )
+      @answer = Answer.new 
     end
   end
 

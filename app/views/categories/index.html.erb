@@ -8,7 +8,12 @@
                     <div class="card-body mx-3">
                         <h3><%= category.title %></h3>
                         <p><span class="font-weight-bold">[<%= pluralize(category.words.count, "word") %>] </span> <%= category.description %></p> <br>
-                        <%= button_to "Learn", lessons_path, params: {category_id: category.id}, class: "btn btn-primary btn-block" %>
+                        <% @lesson = @lessons.find_by(category_id: category.id) %>
+                        <% if @lesson %>
+                            <%= link_to "Result", lesson_path(@lesson), class: "btn btn-outline-success btn-block" %>
+                        <% else %>
+                            <%= button_to "Learn", lessons_path, params: {category_id: category.id}, class: "btn btn-primary btn-block" %>
+                        <% end %>
                     </div>
                 </div>     
             </div>
