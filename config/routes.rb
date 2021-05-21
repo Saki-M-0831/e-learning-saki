@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   root 'pages#home'
   get '/about', to: "pages#about"
+  get '/dashboard', to: "users#dashboard"
 
   namespace :admin do
     get 'pages/home'
