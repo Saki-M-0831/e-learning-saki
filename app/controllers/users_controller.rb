@@ -34,6 +34,9 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def dashboard
+  end
+
   def followers
     @user = User.find(params[:id])
     @followers = @user.followers.paginate(page: params[:page], per_page: 6)

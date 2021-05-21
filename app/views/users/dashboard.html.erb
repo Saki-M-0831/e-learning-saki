@@ -1,0 +1,51 @@
+<section class="container mt-5">
+    <div class="row text-center">
+        <div class="col-4">
+            <div class="card">
+                <div class="card-body py-2">
+                    <% if current_user.picture? %>
+                        <%= image_tag current_user.picture.url, class: "rounded-circle mt-3", :size => "100x100" %>
+                    <% else %>
+                        <%= image_tag "https://cdn.pixabay.com/photo/2017/01/10/03/54/icon-1968236__480.png", class: "rounded-circle", :size => "100x100" %>
+                    <% end %>
+                    <h2><%= current_user.name %></h2>
+                    <%= current_user.email %>
+                    <hr>
+                    <div class="py-2">
+                        <div class="row mx-3">
+                            <div class="col-6">
+                                <%= link_to "View Profile", user_path(current_user), class: "btn btn-warning text-white btn-block" %>
+                            </div>
+                            <div class="col-6">
+                                <%= link_to "Update Profile", edit_user_path(current_user), class: "btn btn-primary btn-block" %>
+                            </div>
+                        </div>
+                    </div>
+                </div>  
+            </div>
+            <div class="card mt-1">  
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-6">
+                            <%= link_to current_user.followers.count, followers_user_path(current_user), class: "text-primary" %>
+                            <p class="mb-0">Followers</p>
+                        </div>
+                        <div class="col-6">
+                            <%= link_to current_user.followings.count, followings_user_path(current_user), class: "text-primary" %>
+                            <p class="mb-0">Followings</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card mt-1">  
+                <div class="card-body">
+                    <%= link_to  "#{current_user.word_learned.count}  Words Learned", root_path, class: "btn btn-primary btn-block" %>
+                </div>
+            </div>
+        </div>     
+        <div class="rol-11 ml-4">
+            <h2>Activity</h2>
+            <hr>
+        </div>   
+    </div>
+</section>

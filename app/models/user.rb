@@ -40,4 +40,9 @@ class User < ApplicationRecord
     ids = active_relationships.pluck(:followed_id)
     User.where(id: ids)
   end 
+
+  def word_learned
+    lesson_ids = lessons.pluck(:id)
+    @answers = Answer.where(lesson_id: lesson_ids)
+  end
 end
