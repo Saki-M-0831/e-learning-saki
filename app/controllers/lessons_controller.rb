@@ -5,4 +5,10 @@ class LessonsController < ApplicationController
     
     redirect_to new_lesson_answer_url(@lesson)
   end
+
+  def show
+    @lesson = Lesson.find(params[:id])
+    @answers = @lesson.answers
+    @category = @lesson.category
+  end
 end
