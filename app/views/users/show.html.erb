@@ -29,23 +29,7 @@
         <div class="col-8">
             <h2>Activity</h2>
             <hr>
-            <div class="card">
-                <div class="card-body py-2">
-                    <div class="row">
-                        <div class="col-2 text-center my-auto">
-                            <% if current_user.picture? %>
-                                <%= image_tag current_user.picture.url, :size => "60x60" %>
-                            <% else %>
-                                <%= image_tag "https://cdn.pixabay.com/photo/2017/01/10/03/54/icon-1968236__480.png", class: "", :size => "60x60" %>
-                            <% end %>
-                        </div>
-                        <div class="col-10">
-                            <p>#{activity.user.name} learned #{number} out of #{number} in #{activity.action.category.title}</p>
-                            <p class="mb-0">#{activity.user.name} started following #{current_user}</p>
-                        </div>
-                    </div>  
-                </div>
-            </div>  
+            <%= render "activites" %>
             <hr>  
         </div>   
     </div>
