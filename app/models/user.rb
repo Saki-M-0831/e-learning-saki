@@ -1,5 +1,6 @@
 class User < ApplicationRecord
-  has_many :lessons
+  has_many :lessons, dependent: :destroy
+  has_many :activities, dependent: :destroy
   mount_uploader :picture, PictureUploader
 
   validates :name, presence: true, length: { maximum: 50 }
@@ -44,5 +45,14 @@ class User < ApplicationRecord
   def word_learned
     lesson_ids = lessons.pluck(:id)
     @answers = Answer.where(lesson_id: lesson_ids)
+  end
+
+  def feed
+    # current
+    # users followed by the current_user
+
+    # activities
+    following_ids = followings.pluck(:id)
+    @activities = Activity.where(user_id: following_ids)
   end
 end

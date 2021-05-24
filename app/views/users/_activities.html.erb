@@ -1,18 +1,38 @@
-<div class="card">
-    <div class="card-body py-2">
-        <div class="row">
-            <div class="col-2 text-center my-auto">
-                <% if current_user.picture? %>
-                    <%= image_tag current_user.picture.url, :size => "60x60" %>
-                <% else %>
-                    <%= image_tag "https://cdn.pixabay.com/photo/2017/01/10/03/54/icon-1968236__480.png", class: "", :size => "60x60" %>
-                <% end %>
-            </div>
-            <div class="col-10">
-                <p>#{activity.user.name} learned #{number} out of #{number} in <span class="badge badge-pill badge-success">#{activity.action.category.title}</span></p>
-                <p class="mb-0">#{activity.user.name} started following <span class="badge badge-pill badge-secondary">#{current_user}</span></p>
-                <%# <small class="text-muted"><%= time_ago_in_words(activity.created_at) ago</small> %> %>
-            </div>
-        </div>  
-    </div>
-</div> 
+<% @activities.each do |activity| %>
+    <div class="card">
+        <div class="card-body py-2">
+            <div class="row">
+                <div class="col-2 text-center my-auto">
+                    <% if activity.user.picture? %>
+                        <%= image_tag activity.user.picture.url, :size => "60x60" %>
+                    <% else %>
+                        <%= image_tag "https://cdn.pixabay.com/photo/2017/01/10/03/54/icon-1968236__480.png", class: "", :size => "60x60" %>
+                    <% end %>
+                </div>
+                <div class="col-10 my-auto">
+                    <% if activity.action_type == "Lesson" %>
+                        <p class="mb-0">
+                            <% if activity.user == current_user %>
+                                <%= link_to "You", user_path(current_user) %>
+                            <% else %>
+                                <%= link_to activity.user.name, user_path(activity.user) %>
+                            <% end %> 
+                            learned <%= activity.action.result %> out of <%= activity.action.answers.count %> in <span class="badge badge-pill badge-success"><%= link_to activity.action.category.title, lesson_path(activity.action), class: "text-white" %></span>
+                        </p>
+                        <small class="text-muted"><%= time_ago_in_words(activity.created_at)%> ago</small> 
+                    <% else %>
+                        <p class="mb-0">
+                            <% if activity.user == current_user %>
+                                <%= link_to "You", user_path(current_user) %>
+                            <% else %>
+                                <%= link_to activity.user.name, user_path(activity.user) %>
+                            <% end %> 
+                             started following <span class="badge badge-pill badge-secondary"><%= link_to User.find_by(id: activity.action.followed_id).name, user_path(User.find_by(id: activity.action.followed_id)), class: "text-white" %></span>
+                        </p>
+                        <small class="text-muted"><%= time_ago_in_words(activity.created_at)%> ago</small> 
+                    <% end %>
+                </div>
+            </div>  
+        </div>
+    </div> 
+ <% end %>

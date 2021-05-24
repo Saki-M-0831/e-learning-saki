@@ -27,14 +27,16 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.all.paginate(page: params[:page], per_page: 6)
+    @users = User.paginate(page: params[:page], per_page: 6)
   end
 
   def show
     @user = User.find(params[:id])
+    @activities = @user.activities
   end
 
   def dashboard
+    @activities = current_user.feed + current_user.activities
   end
 
   def followers
