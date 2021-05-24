@@ -13,9 +13,9 @@
                     <% if activity.action_type == "Lesson" %>
                         <p class="mb-0">
                             <% if activity.user == current_user %>
-                                <%= link_to "You", user_path(current_user) %>
+                                <%= link_to "You", user_path(current_user), class: "text-secondary" %>
                             <% else %>
-                                <%= link_to activity.user.name, user_path(activity.user) %>
+                                <%= link_to activity.user.name, user_path(activity.user), class: "text-primary" %>
                             <% end %> 
                             learned <%= activity.action.result %> out of <%= activity.action.answers.count %> in <span class="badge badge-pill badge-success"><%= link_to activity.action.category.title, lesson_path(activity.action), class: "text-white" %></span>
                         </p>
@@ -23,9 +23,9 @@
                     <% else %>
                         <p class="mb-0">
                             <% if activity.user == current_user %>
-                                <%= link_to "You", user_path(current_user) %>
+                                <%= link_to "You", user_path(current_user), class: "text-secondary" %>
                             <% else %>
-                                <%= link_to activity.user.name, user_path(activity.user) %>
+                                <%= link_to activity.user.name, user_path(activity.user), class: "text-primary" %>
                             <% end %> 
                              started following <span class="badge badge-pill badge-secondary"><%= link_to User.find_by(id: activity.action.followed_id).name, user_path(User.find_by(id: activity.action.followed_id)), class: "text-white" %></span>
                         </p>

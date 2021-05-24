@@ -53,6 +53,6 @@ class User < ApplicationRecord
 
     # activities
     following_ids = followings.pluck(:id)
-    @activities = Activity.where(user_id: following_ids)
+    @activities = Activity.where(user_id: following_ids, user_id: id)
   end
 end
