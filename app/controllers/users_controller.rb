@@ -33,10 +33,12 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @activities = @user.activities.paginate(page: params[:page], per_page: 5)
+    @words = current_user.word_learned(nil)
   end
 
   def dashboard
     @activities = current_user.feed.paginate(page: params[:page], per_page: 5) 
+    @words = current_user.word_learned(nil)
   end
 
   def followers

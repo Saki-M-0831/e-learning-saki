@@ -42,16 +42,19 @@ class User < ApplicationRecord
     User.where(id: ids)
   end 
 
-  def word_learned
+  def word_learned(categ_id)
     lesson_ids = lessons.pluck(:id)
-    @answers = Answer.where(lesson_id: lesson_ids)
+
+    if !categ_id.nil?
+      @lessons = Lesson.where(category_id: categ_id)
+      word_filtered_ids = @lessons.pluck(:id)
+      @answers = Answer.where(lesson_id: word_filtered_ids)
+    else
+      @answers = Answer.where(lesson_id: lesson_ids)
+    end
   end
 
   def feed
-    # current
-    # users followed by the current_user
-
-    # activities
     following_ids = followings.pluck(:id)
     following_ids << id
     @activities = Activity.where(user_id: following_ids)

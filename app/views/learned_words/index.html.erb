@@ -33,6 +33,20 @@
                 </div>
             </div>
             <hr>
+            <div class="row mb-2">
+                <div class="col-4 ml-auto text-right">
+                    <div class="btn-group">
+                        <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Categories
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <% @categories.each do |category|%>
+                                <%= link_to category.title, learned_words_index_path(word_filter: category.id), class: "dropdown-item" %>
+                            <% end %>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="card">
                 <div class="card-header pb-0">
                     <div class="row">
@@ -42,7 +56,7 @@
                     </div>  
                 </div>
             </div>    
-            <% current_user.word_learned.each do |answer| %>
+            <% @words.each do |answer| %>
                 <div class="card">
                     <div class="card-body py-2">
                         <div class="row">
