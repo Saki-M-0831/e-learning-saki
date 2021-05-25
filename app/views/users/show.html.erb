@@ -1,6 +1,6 @@
-<section class="container mt-5">
-    <div class="row mx-5">
-        <div class="col-4 text-center">
+<section class="container mt-4">
+    <div class="row">
+        <div class="col-3 text-center position-fixed">
             <div class="card">
                 <div class="card-body p-2 px-4 profile-bg">
                     <% if @user.picture? %>
@@ -26,11 +26,15 @@
                 </div>
             </div>
         </div>     
-        <div class="col-8">
+        <div class="col-8 mt-2 ml-auto">
             <h2>Activity</h2>
             <hr>
-            <%= render "activites" %>
+            <%= render "activities" %>
             <hr>  
         </div>   
     </div>
 </section>
+
+<div class="col-2 mt-5 mx-auto pl-5">
+    <%= will_paginate @activities %>
+</div>
