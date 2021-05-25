@@ -1,14 +1,26 @@
 <h1 class="text-center my-4">Categories <span class="text-muted">(<%= @categories.count %>)</span> </h1>
 
+
+
 <section class="container">
+    <div class="col-4 text-right ml-auto">
+        <%= link_to "All", categories_path(filter: "all"), class: "btn #{filter_class("all")}" %>
+        <%= link_to "Learned", categories_path(filter: "learned"), class: "btn #{filter_class("learned")}" %>
+        <%= link_to "Not Learned", categories_path(filter: "not learned"), class: "btn #{filter_class("not leanred")}" %>
+    </div>
     <section class="row">
         <% @categories.each do |category| %>
             <div class="col-6 mt-3">
                 <div class="card">
                     <div class="card-body mx-3">
-                        <h3><%= category.title %></h3>
+                    <% @lesson = @lessons.find_by(category_id: category.id) %>
+                        <div class="row">
+                            <div class="col-6"><h3><%= category.title %></h3></div>
+                            <% if @lesson %>
+                            <div class="col-6 ml-auto text-right"><span class="badge badge-pill badge-success">Scored <%= @lesson.score %> out of <%= category.words.count %></span></div>
+                            <% end %>
+                        </div>
                         <p><span class="font-weight-bold">[<%= pluralize(category.words.count, "word") %>] </span> <%= category.description %></p> <br>
-                        <% @lesson = @lessons.find_by(category_id: category.id) %>
                         <% if @lesson %>
                             <%= link_to "Result", lesson_path(@lesson), class: "btn btn-outline-success btn-block" %>
                         <% else %>
