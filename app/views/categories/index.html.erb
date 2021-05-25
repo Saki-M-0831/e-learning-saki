@@ -4,9 +4,9 @@
 
 <section class="container">
     <div class="col-4 text-right ml-auto">
-        <%= link_to "All", categories_path(filter: "all"), class: "btn #{filter_all}" %>
-        <%= link_to "Learned", categories_path(filter: "learned"), class: "btn #{filter_learned}" %>
-        <%= link_to "Not Learned", categories_path(filter: "not learned"), class: "btn #{filter_not_learned}" %>
+        <%= link_to "All", categories_path(filter: "all"), class: "btn #{filter_class("all")}" %>
+        <%= link_to "Learned", categories_path(filter: "learned"), class: "btn #{filter_class("learned")}" %>
+        <%= link_to "Not Learned", categories_path(filter: "not learned"), class: "btn #{filter_class("not leanred")}" %>
     </div>
     <section class="row">
         <% @categories.each do |category| %>
