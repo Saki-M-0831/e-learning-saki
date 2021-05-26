@@ -43,8 +43,6 @@
                             <% if @w.nil? %>
                                 Categories
                             <% else %>
-                                <% w_ids = @words.pluck(:word_id) %>
-                                <% c_id = Word.where(id: w_ids).pluck(:category_id).first %>
                                 <%= Category.find_by(id: c_id).title %>
                             <% end %>
                         </button>
