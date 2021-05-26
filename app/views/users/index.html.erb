@@ -18,7 +18,7 @@
                                 <% if user.is_admin == true %>
                                     <%= fa_icon("star") %>
                                 <% end %>
-                                <%= link_to user.name, root_path %> 
+                                <%= link_to user.name, user_path(user) %> 
                             </h5>
                             <%= user.email %> <br>
                         </div>

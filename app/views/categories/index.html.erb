@@ -1,7 +1,5 @@
 <h1 class="text-center my-4">Categories <span class="text-muted">(<%= @categories.count %>)</span> </h1>
 
-
-
 <section class="container">
     <div class="col-4 text-right ml-auto">
         <%= link_to "All", categories_path(filter: "all"), class: "btn #{filter_class("all")}" %>

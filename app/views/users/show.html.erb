@@ -8,7 +8,17 @@
                     <% else %>
                         <%= image_tag "https://cdn.pixabay.com/photo/2017/01/10/03/54/icon-1968236__480.png", class: "rounded-circle", :size => "100x100" %>
                     <% end %>
-                    <h1 class="pb-3"><%= @user.name %></h1>
+                    <h1 class="pb-2"><%= @user.name %></h1>
+                    <div class="col-6 m-auto">
+                        <% unless @user == current_user %>
+                            <% relationship = current_user.relationship(@user) %>
+                            <% if relationship %>
+                                <%= button_to "Unfollow", relationship_path(relationship), method: :delete, params: {followed_id: @user.id}, class: "btn btn-outline-danger" %> 
+                            <% else %>
+                                <%= button_to "Follow", relationships_path, params: {followed_id: @user.id}, class: "btn btn-outline-primary" %>
+                            <% end %>
+                        <% end %>
+                    </div>
                     <hr>
                     <div class="row">
                         <div class="col-6">
@@ -30,11 +40,10 @@
             <h2>Activity</h2>
             <hr>
             <%= render "activities" %>
-            <hr>  
-        </div>   
+            <hr> 
+            <div class="col-2 mt-2 mx-auto">
+                <%= will_paginate @activities %>
+            </div> 
+        </div>  
     </div>
 </section>
-
-<div class="col-2 mt-5 mx-auto pl-5">
-    <%= will_paginate @activities %>
-</div>

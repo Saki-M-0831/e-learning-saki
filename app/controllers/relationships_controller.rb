@@ -3,7 +3,7 @@ class RelationshipsController < ApplicationController
     other_user = User.find(params[:followed_id]) 
     current_user.follow(other_user).create_activity(user_id: current_user.id)
 
-    redirect_to users_path
+    redirect_back(fallback_location: request.referer)
   end
 
   def destroy
@@ -11,6 +11,6 @@ class RelationshipsController < ApplicationController
     @relationship = Relationship.find(params[:id])
     @relationship.destroy
 
-    redirect_to users_path
+    redirect_back(fallback_location: request.referer)
   end
 end
