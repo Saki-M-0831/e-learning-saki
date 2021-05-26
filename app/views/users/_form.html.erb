@@ -1,27 +1,31 @@
 <section class="row">
     <div class="col-6 m-auto">
         <hr>
-        <%= form_for @user do |f| %>
-        <%= render "error_messages" %>
-            <% if logged_in? %>
-                <%= f.label :avator  %>
-                <%= f.file_field :picture, class: "form-control" %>
-                <p class="my-0 text-muted">* Recommended size: 200px by 200px</p>
-            <% end %>
-            <%= f.label :name  %>
-            <%= f.text_field :name, class: "form-control" %>
+        <div class="card">
+            <div class="card-body">
+                <%= form_for @user do |f| %>
+                <%= render "error_messages" %>
+                    <% if logged_in? %>
+                        <%= f.label :avator  %>
+                        <%= f.file_field :picture, class: "form-control" %>
+                        <p class="my-0 text-muted">* Recommended size: 200px by 200px</p>
+                    <% end %>
+                    <%= f.label :name  %>
+                    <%= f.text_field :name, class: "form-control" %>
 
-            <%= f.label :email %>
-            <%= f.email_field :email, class: "form-control" %>
+                    <%= f.label :email %>
+                    <%= f.email_field :email, class: "form-control" %>
 
-            <%= f.label :password %>
-            <%= f.password_field :password, class: "form-control" %>
+                    <%= f.label :password %>
+                    <%= f.password_field :password, class: "form-control" %>
 
-            <%= f.label :password_confirmation %>
-            <%= f.password_field :password_confirmation, class: "form-control" %>
+                    <%= f.label :password_confirmation %>
+                    <%= f.password_field :password_confirmation, class: "form-control" %>
 
-            <br>
-            <%= f.submit btn_name, class: "btn btn-primary btn-block" %>
-        <% end %>
+                    <br>
+                    <%= f.submit btn_name, class: "btn btn-primary btn-block" %>
+                <% end %>
+            </div>
+        </div> 
     </div>
 </section>

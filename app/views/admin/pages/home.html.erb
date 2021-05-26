@@ -1,14 +1,24 @@
-<h1 class="text-center my-4">Administration</h1>
+<section class="admin-bg">
+    <h1 class="text-center my-4">Administration</h1>
 
-<section class="row text-center">
-    <div class="col-6 m-auto">
-        <div class="col my-5">
-            <%= link_to "Categories", admin_categories_path, class: "btn btn-outline-primary my-2" %>
-            <p>You can manage the categories here freely! <br> Let's add/ edit awesome categories now!!</p>
+    <section class="row text-center">
+        <div class="col-6 m-auto">
+            <div class="col my-5">
+                <div class="card">
+                    <div class="card-body py-1">
+                        <%= link_to "Categories", admin_categories_path, class: "btn btn-outline-primary my-2" %>
+                        <p>You can manage the categories here freely! <br> Let's add/ edit awesome categories now!!</p>
+                    </div>
+                </div>  
+            </div>
+            <div class="col mb-5">
+                <div class="card">
+                    <div class="card-body py-1">
+                        <%= link_to "Administrators", admin_users_path, class: "btn btn-outline-primary my-2" %>
+                        <p>These are the people contributing to improve this app more and more! <br> You can add or remove members.</p>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="col mb-5">
-            <%= link_to "Administrators", admin_users_path, class: "btn btn-outline-primary my-2" %>
-            <p>These are the people contributing to improve this app more and more! <br> You can add or remove members.</p>
-        </div>
-    </div>
+    </section>
 </section>
