@@ -50,11 +50,11 @@
             <h2>Activity</h2>
             <hr>
             <%= render "activities" %>
-            <hr>   
+            <hr> 
+            <div class="col-2 mt-2 mx-auto">
+                <%= will_paginate @activities %>
+            </div>
         </div>   
     </div>
 </section>
 
-<div class="col-2 mt-5 mx-auto pl-5">
-    <%= will_paginate @activities %>
-</div>

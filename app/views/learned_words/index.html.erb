@@ -1,6 +1,6 @@
 <section class="container mt-5">
     <div class="row">
-        <div class="col-4 text-center">
+        <div class="col-4 text-center position-fixed">
             <div class="card">
                 <div class="card-body py-2">
                     <% if current_user.picture? %>
@@ -12,21 +12,24 @@
                     <%= current_user.email %>
                     <hr>
                     <div class="py-2">
-                        <div class="row mx-3">
-                            <div class="col-6">
+                        <div class="row mx-2">
+                            <div class="col-6 mx-0 pl-0 pr-1">
                                 <%= link_to "View Profile", user_path(current_user), class: "btn btn-warning text-white btn-block" %>
                             </div>
-                            <div class="col-6">
-                                <%= link_to "Update Profile", edit_user_path(current_user), class: "btn btn-primary btn-block" %>
+                            <div class="col-6 mx-0 pl-1 pr-0">
+                                <%= link_to "Settings", edit_user_path(current_user), class: "btn btn-primary btn-block" %>
                             </div>
+                            <% if current_user.is_admin? %>
+                                <%= link_to  "Administration", admin_pages_home_path, class: "btn btn-outline-success btn-block mt-2" %>
+                            <% end %>
                         </div>
                     </div>
                 </div>  
             </div>
         </div>     
-        <div class="col-8">
+        <div class="col-7 mt-2 ml-auto">
             <div class="row">
-                <div class="col-4">
+                <div class="col-5">
                     <h2>Words Learned</h2></div>
                 <div class="col-4 mt-auto ml-auto text-right">
                     <%= link_to "Back to Dashboard", dashboard_path %>
@@ -37,9 +40,16 @@
                 <div class="col-4 ml-auto text-right">
                     <div class="btn-group">
                         <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Categories
+                            <% if @w.nil? %>
+                                Categories
+                            <% else %>
+                                <% w_ids = @words.pluck(:word_id) %>
+                                <% c_id = Word.where(id: w_ids).pluck(:category_id).first %>
+                                <%= Category.find_by(id: c_id).title %>
+                            <% end %>
                         </button>
                         <div class="dropdown-menu dropdown-menu-right">
+                            <%= link_to "All categories", learned_words_index_path(word_filter: nil), class: "dropdown-item" %>
                             <% @categories.each do |category|%>
                                 <%= link_to category.title, learned_words_index_path(word_filter: category.id), class: "dropdown-item" %>
                             <% end %>
@@ -73,6 +83,9 @@
                     </div>
                 </div>   
             <% end %>
+            <div class="col-2 mt-2 mx-auto">
+                <%= will_paginate @words %>
+            </div>
         </div>   
     </div>
 </section>
