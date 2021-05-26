@@ -40,11 +40,7 @@
                 <div class="col-4 ml-auto text-right">
                     <div class="btn-group">
                         <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <% if @w.nil? %>
-                                Categories
-                            <% else %>
-                                <%= Category.find_by(id: c_id).title %>
-                            <% end %>
+                            <%= @button_name %>
                         </button>
                         <div class="dropdown-menu dropdown-menu-right">
                             <%= link_to "All categories", learned_words_index_path(word_filter: nil), class: "dropdown-item" %>
