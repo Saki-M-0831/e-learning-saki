@@ -42,7 +42,7 @@
             </div>
             <div class="card mt-1">  
                 <div class="card-body">
-                    <%= link_to  "#{current_user.word_learned.count}  Words Learned", learned_words_index_path, class: "btn btn-primary btn-block" %>
+                    <%= link_to  "#{@words.count}  Words Learned", learned_words_index_path, class: "btn btn-primary btn-block" %>
                 </div>
             </div>
         </div>     
@@ -50,11 +50,11 @@
             <h2>Activity</h2>
             <hr>
             <%= render "activities" %>
-            <hr>   
+            <hr> 
+            <div class="col-2 mt-2 mx-auto">
+                <%= will_paginate @activities %>
+            </div>
         </div>   
     </div>
 </section>
 
-<div class="col-2 mt-5 mx-auto pl-5">
-    <%= will_paginate @activities %>
-</div>
