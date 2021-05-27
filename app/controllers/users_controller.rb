@@ -54,4 +54,19 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:picture, :name, :email, :password, :password_confirmation, :is_admin)
   end
+
+  def like
+    @activity = Activity.find(params[:id])
+    @activity.likes.create(user_id: current_user.id)
+
+    redirect_back(fallback_location: request.referer)
+  end
+
+  def dislike
+    @activity = Activity.find(params[:id])
+    @like = Like.find_by(activity_id: @activity.id, user_id: current_user.id)
+    @like.destroy
+
+    redirect_back(fallback_location: request.referer)
+  end
 end

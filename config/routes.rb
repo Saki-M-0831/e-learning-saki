@@ -27,6 +27,8 @@ Rails.application.routes.draw do
     member do
       get "followers"
       get "followings"
+      post "like"
+      delete "dislike"
     end
   end
 
