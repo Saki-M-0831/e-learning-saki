@@ -38,6 +38,7 @@ class Admin::CategoriesController < ApplicationController
     redirect_to admin_categories_url
   end
 
+  private
   def categ_params
     params.require(:category).permit(:title, :description)
   end
