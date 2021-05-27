@@ -45,6 +45,7 @@ class Admin::WordsController < ApplicationController
     redirect_to admin_category_words_url
   end
 
+  private
   def word_params
     params.require(:word).permit(:content, choices_attributes: [:id, :content, :is_correct])
   end

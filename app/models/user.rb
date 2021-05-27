@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_many :likes, dependent: :destroy
   has_many :lessons, dependent: :destroy
   has_many :activities, dependent: :destroy
   mount_uploader :picture, PictureUploader
