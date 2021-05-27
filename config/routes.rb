@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
 
   get 'learned_words/index'
+
   root 'pages#home'
+
   get '/about', to: "pages#about"
   get '/dashboard', to: "users#dashboard"
 

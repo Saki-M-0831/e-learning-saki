@@ -9,7 +9,7 @@
         <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     </head>
 
-    <body>
+    <body class="page-bg">
         <%= render "layouts/header" %>
         
         <% if flash.any? %>
@@ -20,7 +20,6 @@
             <% end %>
         <% end %>
         <%= yield %>
-        <br>
         <br>
         <br>
         
