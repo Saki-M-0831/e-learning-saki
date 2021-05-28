@@ -20,7 +20,7 @@
                         <div class="col-6 mt-4">
                             <h5>
                                 <% if user.is_admin == true %>
-                                    <%= fa_icon("star") %>
+                                    <span class="text-warning"><%= fa_icon("star") %></span>
                                 <% end %>
                                 <%= link_to user.name, root_path %> 
                             </h5>
