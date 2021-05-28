@@ -2,9 +2,12 @@
     <div class="row">
         <div class="col-4 text-center position-fixed">
             <div class="card">
-                <div class="card-body py-2">
+                <div class="card-body pt-3 p-3 px-4">
+                    <% if current_user.is_admin == true %>
+                        <div class="badge badge-pill badge-warning col-5 float-right">Admin Member</div><br>
+                    <% end %>
                     <% if current_user.picture? %>
-                        <%= image_tag current_user.picture.url, class: "rounded-circle mt-3", :size => "100x100" %>
+                        <%= image_tag current_user.picture.url, class: "rounded-circle", :size => "100x100" %>
                     <% else %>
                         <%= image_tag "https://cdn.pixabay.com/photo/2017/01/10/03/54/icon-1968236__480.png", class: "rounded-circle", :size => "100x100" %>
                     <% end %>
