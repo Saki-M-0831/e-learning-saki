@@ -4,7 +4,7 @@ class AnswersController < ApplicationController
     if @lesson.next_word.nil?
 
       @lesson.update(result: @lesson.score )
-      redirect_to lesson_path(@lesson)
+      redirect_to lesson_path(@lesson, no_back: "no back")
     else
       @word = @lesson.next_word
       @lesson = Lesson.find(params[:lesson_id])

@@ -14,13 +14,30 @@
                     <% @lesson = @lessons.find_by(category_id: category.id) %>
                         <div class="row">
                             <div class="col-6"><h3><%= category.title %></h3></div>
-                            <% if @lesson %>
-                            <div class="col-6 ml-auto text-right"><span class="badge badge-pill badge-success">Scored <%= @lesson.score %> out of <%= category.words.count %></span></div>
+                            <% if @lesson && @lesson.answers.count == @lesson.category.words.count %>
+                                <div class="col-6 ml-auto text-right">
+                                    <span class="badge badge-pill badge-success">Scored <%= @lesson.score %> out of <%= category.words.count %></span>
+                                </div>
+                            <% elsif @lesson && !(@lesson.answers.count == @lesson.category.words.count) %>
+                                <div class="col-6 ml-auto text-right">
+                                    <span class="badge badge-pill badge-warning">Still Ongoing</span>
+                                </div>
                             <% end %>
                         </div>
                         <p><span class="font-weight-bold">[<%= pluralize(category.words.count, "word") %>] </span> <%= category.description %></p> <br>
                         <% if @lesson %>
-                            <%= link_to "Result", lesson_path(@lesson), class: "btn btn-outline-success btn-block" %>
+                            <% if @lesson.answers.count == @lesson.category.words.count%>
+                                <%= link_to "Result", lesson_path(@lesson), class: "btn btn-outline-success btn-block" %>
+                            <% else %>
+                                <div class="row mx-2">
+                                    <div class="col-6 mx-0 pl-0 pr-1">
+                                        <%= link_to "Continue", continue_lesson_path(@lesson), class: "btn btn-success btn-block" %>
+                                    </div>
+                                    <div class="col-6 mx-0 pl-1 pr-0">
+                                        <%= button_to "Retake", lessons_path, params: {category_id: category.id}, class: "btn btn-primary btn-block" %>
+                                    </div>
+                                </div>
+                            <% end %>
                         <% else %>
                             <%= button_to "Learn", lessons_path, params: {category_id: category.id}, class: "btn btn-primary btn-block" %>
                         <% end %>

@@ -34,9 +34,15 @@ Rails.application.routes.draw do
 
   resources :sessions, only: [:new, :create, :destroy]
   resources :relationships, only: [:create, :destroy]
-  resources :categories
+  resources :categories do
+    
+  end
   
   resources :lessons do
     resources :answers
+
+      member do
+        get "continue"
+    end    
   end
 end
