@@ -13,6 +13,7 @@ class LessonsController < ApplicationController
 
   def show
     @lesson = Lesson.find(params[:id])
+    @back = params[:no_back]
     @answers = @lesson.answers
     @category = @lesson.category
   end
