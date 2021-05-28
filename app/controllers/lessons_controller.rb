@@ -1,7 +1,7 @@
 class LessonsController < ApplicationController
   def create
-    if Lesson.find_by(user_id: current_user.id, category_id: params[:category_id])
-      Lesson.find_by(user_id: current_user.id, category_id: params[:category_id]).destroy
+    if @former_lesson = current_user.lessons.find_by(category_id: params[:category_id])
+      @former_lesson.destroy
     end  
 
     @lesson = current_user.lessons.new(category_id: params[:category_id])
